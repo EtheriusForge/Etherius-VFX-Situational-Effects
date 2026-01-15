@@ -17,5 +17,8 @@
   "flags": {
     "canUpload": true
   },
-  "description": ""
+  "description": "",
+  "scripts": [
+  "scripts/main.js"
+]
 }
