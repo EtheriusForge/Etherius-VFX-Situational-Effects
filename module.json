@@ -1,7 +1,7 @@
 {
   "id": "on-screen-effects",
   "title": "On Screen Effects",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -20,5 +20,8 @@
   "description": "",
   "scripts": [
   "scripts/main.js"
-]
+  ],
+  "styles": [
+    "styles/effectStyles.css"
+  ]
 }

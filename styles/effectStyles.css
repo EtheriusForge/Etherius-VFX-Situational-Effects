@@ -1,3 +1,4 @@
+/* The red flash overlay */
 #vignette-death-flash {
     position: fixed;
     top: 0;
@@ -5,33 +6,32 @@
     width: 100vw;
     height: 100vh;
     pointer-events: none; 
-    z-index: 1000; 
-    box-shadow: inset 0 0 100px 50px rgba(255, 0, 0, 0.8);
-    background: radial-gradient(circle, rgba(255, 0, 0, 0) 40%, rgba(150, 0, 0, 0.6) 100%);
+    
+    /* Z-index 5 sits above the canvas but below sidebars/windows */
+    z-index: 5; 
+    
+    /* Cinematic red vignette */
+    box-shadow: inset 0 0 150px 80px rgba(200, 0, 0, 0.9);
+    background: radial-gradient(circle, rgba(255, 0, 0, 0) 25%, rgba(150, 0, 0, 0.7) 100%);
+    
     opacity: 1;
-    transition: opacity 3s ease-out; /* This handles the slow fade */
+    transition: opacity 4s ease-out;
 }
 
+/* State for the fade-out effect */
 #vignette-death-flash.fade-out {
     opacity: 0;
 }
 
-
-@keyframes screen-shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+/* Shake animation for the game map */
+.board-shake {
+    animation: canvas-shake 0.4s ease-in-out;
 }
 
-.shake-impact {
-  animation: screen-shake 0.4s; 
-  animation-iteration-count: 1;
+@keyframes canvas-shake {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(-8px, 4px); }
+    50% { transform: translate(8px, -4px); }
+    75% { transform: translate(-4px, -2px); }
+    100% { transform: translate(0,0); }
 }
