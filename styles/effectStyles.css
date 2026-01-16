@@ -1,24 +1,29 @@
-/* The red flash overlay */
+/* Container (already in your file, just ensuring z-index) */
 #vignette-death-flash {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; 
-    
-    /* Z-index 5 sits above the canvas but below sidebars/windows */
-    z-index: 5; 
-    
-    /* Cinematic red vignette */
+    pointer-events: none;
+    z-index: 5;
     box-shadow: inset 0 0 150px 80px rgba(200, 0, 0, 0.9);
     background: radial-gradient(circle, rgba(255, 0, 0, 0) 25%, rgba(150, 0, 0, 0.7) 100%);
-    
     opacity: 1;
     transition: opacity 4s ease-out;
+    display: flex;
+    justify-content: space-between; /* Pushes images to the left and right edges */
+    align-items: center;
 }
 
-/* State for the fade-out effect */
+/* Common style for the side images */
+.death-blood-splatter {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    /* opacity: 0.8;  Slight transparency for realism */
+}
+
 #vignette-death-flash.fade-out {
     opacity: 0;
 }
