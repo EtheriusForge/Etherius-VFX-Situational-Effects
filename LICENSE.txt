@@ -5,24 +5,27 @@ Etherius's VFX: Situational Effects Copyright (c) 2026 Etherius
 This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 
+
 Overview
 
 This license allows you to use, modify, and redistribute this module for personal and non-commercial use, provided that appropriate credit is given and any derivative works are shared under these same terms.
+
 
 
 Attribution & Content Creation
 
 The author encourages the use of this module in recorded or live-streamed content (e.g., YouTube, Twitch). If this module is featured in your production, we kindly request the following:
 
-    Attribution: Please attribute the work to Etherius within the video description.
+Attribution: Please attribute the work to Etherius within the video description.
 
 Professional attribution supports continued development and helps the community discover new tools for their games.
 
 
+
 Formal Terms
 
-    Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 
-    Non-Commercial: You may not use this material for commercial purposes. This includes the sale of the module, charging for access, or bundling it within paid software packages.
+Non-Commercial: You may not use this material for commercial purposes. This includes the sale of the module, charging for access, or bundling it within paid software packages.
 
-    ShareAlike: If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+ShareAlike: If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
