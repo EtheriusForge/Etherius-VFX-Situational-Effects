@@ -17,6 +17,7 @@ All notable changes to **Etherius's VFX: Situational Effects** will be documente
 - **Cross-Client Sync**: Integrated socket logic allowing players to see each other's "Downed" effects based on their personal preferences.
 - **Compatibility**: Confirmed support and optimized performance for **Monk's Common Display**.
 - **Test Button**: Added a "Test Downed Effect" menu button in settings for instant visual previews.
+- **Solo DM Mode**: A specialized setting for the lonely preppers out there. Toggle this to see the effects for every character on the map while you play with yourself, regardless of assignment.
 
 ### Changed
 - **Code Architecture**: Refined the module to be entirely self-contained, significantly reducing the risk of conflicts with other active modules.
