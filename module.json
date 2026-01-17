@@ -1,6 +1,6 @@
 {
   "id": "on-screen-effects",
-  "title": "On Screen Effects",
+  "title": "Etherius's VFX: Situational Effects",
   "version": "0.1.1",
   "compatibility": {
     "minimum": "13",
@@ -17,11 +17,13 @@
   "flags": {
     "canUpload": true
   },
-  "description": "",
-  "scripts": [
-  "scripts/main.js"
+  "esmodules": [
+    "scripts/main.js"
   ],
   "styles": [
-    "styles/effectStyles.css"
-  ]
+    {
+      "src": "styles/effectStyles.css"
+    }
+  ],
+  "description": ""
 }
