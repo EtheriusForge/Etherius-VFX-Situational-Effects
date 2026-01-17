@@ -1,6 +1,6 @@
 # Etherius's VFX: Situational Effects
 
-A lightweight visual enhancement module for Foundry VTT (v13+) designed to provide immersive feedback during combat events.
+A lightweight visual enhancement module for Foundry VTT (v13+) that provides immersive, gameplay-triggered, situational effects. It works perfectly right out of the box, while offering deep customization options for those who want to fine-tune the experience.
 
 ## Features
 * **GM Master Defaults:** GMs can set "World Defaults" to define the initial settings for all players while still allowing for individual customization.
@@ -12,9 +12,18 @@ A lightweight visual enhancement module for Foundry VTT (v13+) designed to provi
 ---
 
 ## Compatibility
-This module is built to play nice with others! It has been tested and confirmed compatible with:
-* **Monk's Common Display**: Perfect for GMs using a physical TV or a common screen.
-* *(More modules coming soon as testing continues!)*
+
+This module is built to be self-contained to prevent compatibility issues. Certain popular modules and modules commonly used by my group were kept in mind and tested during development to prevent issues.
+
+### Supported Systems
+* **Dungeons & Dragons 5e**: Full support for version 13+.
+* **Daggerheart**: Support is currently in development and coming soon!
+
+### Confirmed Module Compatibility
+* **Monk's Common Display**: Optimized for shared player screens and digital tabletops.
+* **Midi-QOL**: Verified to trigger correctly on damage application.
+
+**Using a module not listed here?** I can't list every module here, but most "plug-and-play" modules work perfectly. If you find a conflict, please notify me via Discord or GitHub and I will work to resolve it.
 
 ---
 
@@ -34,7 +43,7 @@ Change the Module settings as you like:
 
 1. Navigate to **Configure Settings** -> **Etherius's VFX: Situational Effects**.
 2. **For GMs:** Use the restricted **[Default]** settings to set the baseline effects and appearance for your world (e.g., green blood for an alien sci-fi game). New players will automatically inherit these values when they join the world.
-3. **For Players:** Adjust personal parameters (colors, duration, etc) to your preference. Your personal settings will override the GM defaults.
+3. **For Players:** Adjust personal parameters (colors, duration, etc) to your preference. Do your characters not have red blood? Go ahead and modify the blood color to suit you. Your personal settings will override the defaults.
 4. **Save** your settings and then use the **Test** button to test the effects to verify the configuration.
 
 ---

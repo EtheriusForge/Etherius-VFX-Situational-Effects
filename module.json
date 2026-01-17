@@ -1,9 +1,8 @@
 {
   "id": "on-screen-effects",
   "title": "Etherius's VFX: Situational Effects",
-  "description": "visual feedback for character health changes and combat events.",
+  "description": "<p>A lightweight visual enhancement module for Foundry VTT (v13+) that provides immersive, gameplay-triggered, situational effects. It works perfectly right out of the box, while offering deep customization options for those who want to fine-tune the experience.</p>",
   "version": "1.0.0",
-  "library": "false",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -11,7 +10,8 @@
   "authors": [
     {
       "name": "Etherius",
-      "discord": "etheriustv"
+      "discord": "etheriustv",
+      "flags": {}
     }
   ],
   "esmodules": [
@@ -21,5 +21,6 @@
     {
       "src": "styles/effectStyles.css"
     }
-  ]
+  ],
+  "flags": {}
 }
