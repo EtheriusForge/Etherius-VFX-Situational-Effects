@@ -8,15 +8,52 @@ Hooks.once("init", function() {
   registerSettings();
 });
 
-// socket listener for cross-client vfx synchronization
-Hooks.once("ready", () => {
-  game.socket.on(`module.${MID}`, (data) => {
-      const seeAll = game.settings.get(MID, "seeAllDeaths");
-      
-      if (seeAll && data.action === "triggerDeathVignette" && data.userId !== game.user.id) {
+
+Hooks.once("ready", async() => {
+
+  // check if this is player's first time
+    const alreadySetup = game.settings.get(MID, "hasInitialized");
+
+    if (!alreadySetup) {
+        console.log("Etherius's VFX | First-time setup: Syncing player settings to GM defaults.");
+
+        // keys to copy from the GM to the player
+        const keysToSync = [
+            "enableDownedEffects", 
+            "enableShake", 
+            "enableDeathVignette", 
+            "deathVignetteColor", 
+            "enableDeathBlood", 
+            "bloodColor", 
+            "fadeDuration", 
+            "seeAllDeaths"
+        ];
+
+        for (let key of keysToSync) {
+            const worldKey = `worldDefault${key.charAt(0).toUpperCase() + key.slice(1)}`;
+            const gmValue = game.settings.get(MID, worldKey);
+            
+            await game.settings.set(MID, key, gmValue);
+        }
+
+        //never run for this player again
+        await game.settings.set(MID, "hasInitialized", true);
+    }
+
+    // socket listener for cross-client vfx synchronization
+    game.socket.on(`module.${MID}`, (data) => {
+        const seeAll = game.settings.get(MID, "seeAllDeaths");
+
+        if (seeAll && data.action === "triggerDeathVignette") {
+          if (data.userId === game.user.id) return;
+
+          console.log(`Etherius's VFX | Syncing effect from user: ${data.userName}`);
+          
+          //effect uses player's colors
           triggerDeathVignette(data.bloodColor, data.vignetteColor);
-      }
-  });
+        }
+    });
+
 });
 
 // monitor actor updates 
@@ -43,12 +80,14 @@ Hooks.on("updateActor", (actor, unused, updateData) => {
       if(downedEffectEnabled){
       triggerDeathVignette(bColor, vColor);
       }
+
       // your death scream
       game.socket.emit(`module.${MID}`, {
-          action: "triggerDeathVignette",
-          userId: game.user.id,
-          bloodColor: bColor,      
-          vignetteColor: vColor    
+        action: "triggerDeathVignette",
+        userId: game.user.id,
+        userName: game.user.name, 
+        bloodColor: game.settings.get(MID, "bloodColor"),
+        vignetteColor: game.settings.get(MID, "deathVignetteColor")   
       });
     }
   }
