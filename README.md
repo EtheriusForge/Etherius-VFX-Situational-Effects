@@ -3,7 +3,7 @@
 A lightweight visual enhancement module for Foundry VTT (v13+) that provides immersive, gameplay-triggered, situational effects. It works perfectly right out of the box, while offering deep customization options for those who want to fine-tune the experience.
 
 ## Features
-* **GM Master Defaults:** GMs can set "World Defaults" to define the initial settings for all players while still allowing for individual customization.
+* **DM Master Defaults:** DMs can set "World Defaults" to define the initial settings for all players while still allowing for individual customization.
 * **Downed VFX:** Triggers a vignette and blood splatter overlay when a character reaches 0 HP.
 * **Synchronized Display:** Optional setting to see visual effects when ANY party member is downed. The effect will display using the specific colors chosen by that player for their character.
 * **Customization:** Complete control over vignette colors, blood color, fade durations, and screen-shake intensity.
@@ -42,7 +42,7 @@ To install the module, follow these steps:
 Change the Module settings as you like:
 
 1. Navigate to **Configure Settings** -> **Etherius's VFX: Situational Effects**.
-2. **For GMs:** Use the restricted **[Default]** settings to set the baseline effects and appearance for your world (e.g., green blood for an alien sci-fi game). New players will automatically inherit these values when they join the world for the first time.
+2. **For DMs:** Use the restricted **[Default]** settings to set the baseline effects and appearance for your world (e.g., green blood for an alien sci-fi game). New players will automatically inherit these values when they join the world for the first time.
 3. **For Players:** Adjust personal parameters (colors, duration, etc) to your preference. Do your characters not have red blood? Go ahead and modify the blood color to suit you. Your personal settings will override the defaults.
 4. **Save** your settings and then use the **Test** button to test the effects to verify the configuration.
 
@@ -70,4 +70,4 @@ This module is actively maintained. Planned future enhancements include:
 
 ## Content Creation & Streaming
 I encourage the use of this module in recorded or live-streamed content (YouTube, Twitch, etc.). If this module is featured in your production, I kindly request the following:
-* **Identification:** Please attribute the work to **Etherius** within the video description.
+* **Attribution:** Please attribute the work to **Etherius** within the video description.
