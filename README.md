@@ -42,7 +42,7 @@ To install the module, follow these steps:
 Change the Module settings as you like:
 
 1. Navigate to **Configure Settings** -> **Etherius's VFX: Situational Effects**.
-2. **For GMs:** Use the restricted **[Default]** settings to set the baseline effects and appearance for your world (e.g., green blood for an alien sci-fi game). New players will automatically inherit these values when they join the world.
+2. **For GMs:** Use the restricted **[Default]** settings to set the baseline effects and appearance for your world (e.g., green blood for an alien sci-fi game). New players will automatically inherit these values when they join the world for the first time.
 3. **For Players:** Adjust personal parameters (colors, duration, etc) to your preference. Do your characters not have red blood? Go ahead and modify the blood color to suit you. Your personal settings will override the defaults.
 4. **Save** your settings and then use the **Test** button to test the effects to verify the configuration.
 
