@@ -1,26 +1,23 @@
-/* Main container for the death effect */
+/* container */
 #vignette-death-flash {
-    position: absolute; /* Changed from fixed for better layer anchoring */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 5; /* Above map, below most UI windows */
+    z-index: 5;
     
-    /* Layout for blood splatters */
+    /* splatter layout */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    overflow: hidden; /* Important for the drop-shadow trick */
+    overflow: hidden;
 
-    /* The glow effect is handled via JS vignetteColor, but we keep 
-       the structure here as a fallback */
     opacity: 1;
-    /* transition is set via JS style.transition to match fadeDuration setting */
 }
 
-/* Common blood splatter styles */
+/* blood image */
 .death-blood-splatter {
     height: 100%;
     width: auto;
@@ -28,20 +25,17 @@
     object-fit: contain;
     position: relative;
     
-    /* The "Secret Sauce": 
-       Moves the source image off-screen to the left (-100vw) 
-       and projects a shadow back to the right (+100vw) tinted 
-       by the --blood-tint variable from your settings. */
+    /* shadow projection trick */
     left: -100vw;
     filter: drop-shadow(100vw 0 0 var(--blood-tint));
 }
 
-/* Fading state */
+/* trigger fade */
 #vignette-death-flash.fade-out {
     opacity: 0;
 }
 
-/* Shake animation for the game map (#board) */
+/* map shake */
 .board-shake {
     animation: canvas-shake 0.4s ease-in-out;
 }
@@ -53,5 +47,3 @@
     75% { transform: translate(-4px, -2px); }
     100% { transform: translate(0,0); }
 }
-
-

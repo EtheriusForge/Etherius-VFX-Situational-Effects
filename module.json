@@ -1,7 +1,9 @@
 {
   "id": "on-screen-effects",
   "title": "Etherius's VFX: Situational Effects",
-  "version": "0.1.1",
+  "description": "visual feedback for character health changes and combat events.",
+  "version": "1.0.0",
+  "library": "false",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -9,14 +11,9 @@
   "authors": [
     {
       "name": "Etherius",
-      "email": "etheriusforge@gmail.com",
-      "discord": "etheriustv",
-      "flags": {}
+      "discord": "etheriustv"
     }
   ],
-  "flags": {
-    "canUpload": true
-  },
   "esmodules": [
     "scripts/main.js"
   ],
@@ -24,6 +21,5 @@
     {
       "src": "styles/effectStyles.css"
     }
-  ],
-  "description": ""
+  ]
 }

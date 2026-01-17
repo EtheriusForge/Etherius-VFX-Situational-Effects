@@ -80,6 +80,7 @@ export const registerSettings = function() {
         default: 4000
     });
 
+    // see when other people go down
     game.settings.register(MID, "seeAllDeaths", {
         name: "Show All Player Deaths",
         hint: "If enabled, you will see the effect when ANY player character hits 0 HP. The blood and vignette will have the player's chosen colors.",
@@ -89,6 +90,7 @@ export const registerSettings = function() {
         default: false
     });
 
+    // for testing stuff, don't forget to hide it       loser
     game.settings.register(MID, "debugMode", {
         name: "Debug Mode",
         hint: "If you're seeing this, yell at Etherius. He forgot to hide it before sharing the module.",
@@ -98,6 +100,8 @@ export const registerSettings = function() {
         default: false
     });
 
+
+    // preview button section
     game.settings.registerMenu(MID, "testEffectMenu", {
         name: "Test \"Downed\" Effect",
         label: " Test", 

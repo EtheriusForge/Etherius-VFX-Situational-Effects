@@ -4,36 +4,46 @@ const MID = "on-screen-effects";
 
 
 Hooks.once("init", function() {
-  CONFIG.debug.hooks = true;
+  //CONFIG.debug.hooks = true;
   registerSettings();
 });
 
+// socket listener for cross-client vfx synchronization
 Hooks.once("ready", () => {
   game.socket.on(`module.${MID}`, (data) => {
       const seeAll = game.settings.get(MID, "seeAllDeaths");
       
-      if (!game.user.isGM && seeAll && data.action === "triggerDeathVignette" && data.userId !== game.user.id) {
+      if (seeAll && data.action === "triggerDeathVignette" && data.userId !== game.user.id) {
           triggerDeathVignette(data.bloodColor, data.vignetteColor);
       }
   });
 });
 
-Hooks.on("updateActor", (actor) => {
+// monitor actor updates 
+Hooks.on("updateActor", (actor, unused, updateData) => {
   const currentUserId = game.user.id;
   const isOwner = actor.ownership[currentUserId] === 3;
   const debugMode = game.settings.get(MID, "debugMode");
   const downedEffectEnabled = game.settings.get(MID, "enableDownedEffects");
 
+  // restrict execution to character owner or debug session
   if ((isOwner && !game.user.isGM) || debugMode) {
-    const newHP = actor.system.attributes.hp.value;
-    if(newHP !== undefined && newHP <= 0){
+    // hp paths
+    const currentHP = foundry.utils.getProperty(actor, "system.attributes.hp.value");
+    //console.log(currentHP + "aaaaaaa");
+    const previousHP = foundry.utils.getProperty(updateData, "dnd5e.hp.value") 
+                    ?? foundry.utils.getProperty(updateData, "system.attributes.hp.value");
+    //console.log(previousHP + "aaaaaaa");
+
+    // only when transitioning from positive hp to zero/negative
+    if (previousHP !== undefined && previousHP > 0 && currentHP <= 0){
       const bColor = game.settings.get(MID, "bloodColor");
       const vColor = game.settings.get(MID, "deathVignetteColor");
 
       if(downedEffectEnabled){
       triggerDeathVignette(bColor, vColor);
       }
-
+      // your death scream
       game.socket.emit(`module.${MID}`, {
           action: "triggerDeathVignette",
           userId: game.user.id,
@@ -48,7 +58,7 @@ export function triggerDeathVignette(socketBloodColor = null, socketVignetteColo
   const MID = "on-screen-effects";
   if (document.getElementById('vignette-death-flash')) return;
 
-  // 2. Retrieve current user settings
+  // socket check first then client settings
   const bloodColor = socketBloodColor ?? game.settings.get(MID, "bloodColor");
   const vignetteColor = socketVignetteColor ?? game.settings.get(MID, "deathVignetteColor");
 
@@ -57,18 +67,18 @@ export function triggerDeathVignette(socketBloodColor = null, socketVignetteColo
   const vignetteEnabled = game.settings.get(MID, "enableDeathVignette");
   const bloodEnabled = game.settings.get(MID, "enableDeathBlood");
 
-  // 3. Create Main Container
+  // vignette thing
   const vignette = document.createElement('div');
   vignette.id = 'vignette-death-flash';
   
-  // Apply dynamic styling for the vignette background and transition
+  // the colour and size and stuff
   if(vignetteEnabled){
     vignette.style.background = `radial-gradient(circle, rgba(0,0,0,0) 25%, ${vignetteColor}B3 100%)`;
     vignette.style.boxShadow = `inset 0 0 150px 80px ${vignetteColor}E6`;
   }
   vignette.style.transition = `opacity ${duration}ms ease-out`;
   
-  // 4. Create and Tint Blood Splatters
+  // build and tint blood splatter
   if(bloodEnabled){
     const leftBlood = document.createElement('img');
     leftBlood.src = `modules/${MID}/assets/bloodEffectLeft.png`;
@@ -84,20 +94,20 @@ export function triggerDeathVignette(socketBloodColor = null, socketVignetteColo
     vignette.appendChild(rightBlood);
   }
   
-  // 5. Append to #interface for Monk's Common Display compatibility
+  // attach vignette thing to interface
   const interfaceLayer = document.getElementById('interface');
   (interfaceLayer || document.body).appendChild(vignette);
 
-  // 6. Handle Screen Shake
+  // stop banging on the table
   const board = document.getElementById('board');
   if (board && doShake) board.classList.add('board-shake');
 
-  // 7. Trigger the Animation
+  // fade out
   requestAnimationFrame(() => {
       vignette.classList.add('fade-out');
   });
   
-  // 8. Robust Cleanup
+  // cleanup
   setTimeout(() => {
       const existingVignette = document.getElementById('vignette-death-flash');
       if (existingVignette) {
