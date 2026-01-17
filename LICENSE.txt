@@ -14,7 +14,7 @@ Attribution & Content Creation
 
 The author encourages the use of this module in recorded or live-streamed content (e.g., YouTube, Twitch). If this module is featured in your production, we kindly request the following:
 
-    Attribution: Please attribute the work to Etherius within the video description.
+Attribution: Please attribute the work to Etherius within the video description.
 
 Professional attribution supports continued development and helps the community discover new tools for their games.
 
