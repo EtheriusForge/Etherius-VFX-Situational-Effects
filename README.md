@@ -23,7 +23,7 @@ This module is built to be self-contained to prevent compatibility issues. Certa
 * **Monk's Common Display**: Optimized for shared player screens and digital tabletops.
 * **Midi-QOL**: Verified to trigger correctly on damage application.
 
-**Using a module not listed here?** I can't list every module here, but most "plug-and-play" modules work perfectly. If you find a conflict, please notify me via Discord or GitHub and I will work to resolve it.
+**Using a module not listed here?** I can't list every module, but most "plug-and-play" modules work perfectly. If you find a conflict, please notify me via Discord or GitHub and I will work to resolve it.
 
 ---
 
