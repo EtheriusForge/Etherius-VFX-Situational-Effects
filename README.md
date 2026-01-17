@@ -6,7 +6,7 @@ A lightweight visual enhancement module for Foundry VTT (v13+) that provides imm
 * **GM Master Defaults:** GMs can set "World Defaults" to define the initial settings for all players while still allowing for individual customization.
 * **Downed VFX:** Triggers a vignette and blood splatter overlay when a character reaches 0 HP.
 * **Synchronized Display:** Optional setting to see visual effects when ANY party member is downed. The effect will display using the specific colors chosen by that player for their character.
-* **Customization:** Complete control over vignette colors, blood tinting, fade durations, and screen-shake intensity.
+* **Customization:** Complete control over vignette colors, blood color, fade durations, and screen-shake intensity.
 * **Live Preview:** Integrated test functionality within the settings menu to preview effects instantly.
 
 ---
