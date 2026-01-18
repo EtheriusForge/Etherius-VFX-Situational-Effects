@@ -117,7 +117,8 @@ export const registerSettings = function () {
         scope: "client",
         config: true,
         type: Boolean,
-        default: false
+        default: false,
+        restricted: true
     });
 
     // Hidden flag for first-time sync
