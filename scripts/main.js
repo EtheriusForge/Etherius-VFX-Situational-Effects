@@ -5,25 +5,17 @@ const MID = "on-screen-effects";
 
 Hooks.once("init", function () {
   CONFIG.debug.hooks = true;
+  console.log("Etherius VFX Launching");
   registerSettings();
 });
 
+/*
+*
+* READY HOOK
+*
+*/
 
 Hooks.once("ready", async () => {
-
-  // socket listener for cross-client vfx synchronization
-  game.socket.on(`module.${MID}`, (data) => {
-    const seeAll = game.settings.get(MID, "seeAllDeaths");
-
-    if (seeAll && data.action === "triggerDeathVignette") {
-      if (data.userId === game.user.id) return;
-
-      console.log(`Etherius's VFX | Syncing effect from user: ${data.userName}`);
-
-      //effect uses player's colors
-      triggerDeathVignette(data.bloodColor, data.vignetteColor);
-    }
-  });
 
   // check if this is player's first time
   const alreadySetup = game.settings.get(MID, "hasInitialized");
@@ -56,16 +48,23 @@ Hooks.once("ready", async () => {
 
 });
 
+
+/*
+*
+* UPDATE ACTOR HOOK
+*
+*/
+
 // monitor actor updates 
 Hooks.on("updateActor", (actor, unused, updateData) => {
   const currentUserId = game.user.id;
   const isOwner = actor.ownership[currentUserId] === 3;
   const debugMode = game.settings.get(MID, "debugMode");
-  const isSoloDM = game.settings.get(MID, "soloDM");
   const downedEffectEnabled = game.settings.get(MID, "enableDownedEffects");
+  const seeAll = game.settings.get(MID, "seeAllDeaths");
 
   // restrict execution to character owner or debug session
-  if ((isOwner && !game.user.isGM) || debugMode || isSoloDM ) {
+  if ((isOwner && !game.user.isGM) || debugMode || seeAll ) {
     // hp paths
     const currentHP = foundry.utils.getProperty(actor, "system.attributes.hp.value");
     //console.log(currentHP + "aaaaaaa");
@@ -76,34 +75,23 @@ Hooks.on("updateActor", (actor, unused, updateData) => {
     // only when transitioning from positive hp to zero/negative
     if (previousHP !== undefined && previousHP > 0 && currentHP <= 0) {
 
-      if(isSoloDM){
-        
-        const characterFlags = actor.getFlag(MID, "downedEffect");
-        const vColor = characterFlags?.vignetteColor || "#8b0000";
-        const bColor = characterFlags?.bloodColor || "#8b0000";
+      const characterFlags = actor.getFlag(MID, "downedEffect");
+      const vColor = characterFlags?.vignetteColor || "#8b0000";
+      const bColor = characterFlags?.bloodColor || "#8b0000";
 
-        triggerDeathVignette(bColor, vColor);
-
-      }else{
-        const bColor = game.settings.get(MID, "bloodColor");
-        const vColor = game.settings.get(MID, "deathVignetteColor");
-
-        if (downedEffectEnabled) {
+      if (downedEffectEnabled) {
           triggerDeathVignette(bColor, vColor);
-        }
-        // your death scream
-        game.socket.emit(`module.${MID}`, {
-          action: "triggerDeathVignette",
-          userId: game.user.id,
-          userName: game.user.name,
-          bloodColor: game.settings.get(MID, "bloodColor"),
-          vignetteColor: game.settings.get(MID, "deathVignetteColor")
-        });
       }
       
     }
   }
 });
+
+/*
+*
+* CLOSE CONFIG SETTINGS HOOK
+*
+*/
 
 Hooks.on("closeSettingsConfig", async (app, html) => {
     const actor = game.user.character;
@@ -121,6 +109,13 @@ Hooks.on("closeSettingsConfig", async (app, html) => {
     console.log(`Etherius VFX | Appearance synced to character: ${actor.name}`);
 });
 
+
+/*
+*
+* CHAT MESSAGE HOOK
+*
+*/
+
 //pls ignore this, it's an inside joke with my DnD group
 Hooks.on("chatMessage", (chatLog, message, chatData) => {
     
@@ -132,65 +127,75 @@ Hooks.on("chatMessage", (chatLog, message, chatData) => {
     }
 });
 
+
+/*
+*
+* TRIGGER DOWNED EFFECT
+*
+*/
+
 export function triggerDeathVignette(socketBloodColor = null, socketVignetteColor = null) {
   const MID = "on-screen-effects";
-  if (document.getElementById('vignette-death-flash')) return;
+  
+  // clean
+  const oldVignette = document.getElementById('vignette-death-flash');
+  if (oldVignette) oldVignette.remove();
 
-  // socket check first then client settings
+  // prepare effects based on settings
   const bloodColor = socketBloodColor ?? game.settings.get(MID, "bloodColor");
   const vignetteColor = socketVignetteColor ?? game.settings.get(MID, "deathVignetteColor");
-
   const duration = game.settings.get(MID, "fadeDuration");
   const doShake = game.settings.get(MID, "enableShake");
   const vignetteEnabled = game.settings.get(MID, "enableDeathVignette");
   const bloodEnabled = game.settings.get(MID, "enableDeathBlood");
+  
 
-  // vignette thing
   const vignette = document.createElement('div');
   vignette.id = 'vignette-death-flash';
+  
+  
+  vignette.style.opacity = "1"; 
+  vignette.style.pointerEvents = "none";
+  vignette.style.zIndex = "5"; 
 
-  // the colour and size and stuff
   if (vignetteEnabled) {
     vignette.style.background = `radial-gradient(circle, rgba(0,0,0,0) 25%, ${vignetteColor}B3 100%)`;
     vignette.style.boxShadow = `inset 0 0 150px 80px ${vignetteColor}E6`;
   }
   vignette.style.transition = `opacity ${duration}ms ease-out`;
 
-  // build and tint blood splatter
   if (bloodEnabled) {
+    // Left Blood
     const leftBlood = document.createElement('img');
     leftBlood.src = `modules/${MID}/assets/bloodEffectLeft.png`;
     leftBlood.classList.add('death-blood-splatter');
     leftBlood.style.setProperty('--blood-tint', bloodColor);
+    vignette.appendChild(leftBlood);
 
+    // Right Blood
     const rightBlood = document.createElement('img');
     rightBlood.src = `modules/${MID}/assets/bloodEffectRight.png`;
     rightBlood.classList.add('death-blood-splatter');
     rightBlood.style.setProperty('--blood-tint', bloodColor);
-
-    vignette.appendChild(leftBlood);
     vignette.appendChild(rightBlood);
   }
 
-  // attach vignette thing to interface
+  
   const interfaceLayer = document.getElementById('interface');
-  (interfaceLayer || document.body).appendChild(vignette);
 
-  // stop banging on the table
+  (interfaceLayer || document.body).appendChild(vignette); 
+
   const board = document.getElementById('board');
   if (board && doShake) board.classList.add('board-shake');
 
-  // fade out
-  requestAnimationFrame(() => {
-    vignette.classList.add('fade-out');
-  });
+  
+  setTimeout(() => {
+    vignette.style.opacity = "0";
+  }, 50);
 
   // cleanup
   setTimeout(() => {
-    const existingVignette = document.getElementById('vignette-death-flash');
-    if (existingVignette) {
-      existingVignette.remove();
-    }
+    if (vignette.parentNode) vignette.remove();
     if (board) board.classList.remove('board-shake');
-  }, duration);
+  }, duration + 100);
 }

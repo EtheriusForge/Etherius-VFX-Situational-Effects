@@ -69,10 +69,10 @@ export const registerSettings = function () {
         },
         {
             key: "seeAllDeaths",
-            name: "Show All Player Deaths",
+            name: "Show All Players' Downed Effects",
             type: Boolean,
             def: false,
-            hint: "If enabled, you will see the effect when ANY player character hits 0 HP. The blood and vignette will use that player's chosen colors. The player must be online for you to see the effect. Go to the Solo Dev setting if they're offline."
+            hint: "If enabled, you will see the effect when ANY player character hits 0 HP. The blood and vignette will use that player's chosen colors. Good if you want some to share in the party's trauma."
         }
     ];
 
@@ -109,16 +109,6 @@ export const registerSettings = function () {
         config: false,
         type: Boolean,
         default: false
-    });
-
-    game.settings.register(MID, "soloDM", {
-        name: "Solo DM Mode",
-        hint: "Prep work is lonely, isn't it? Toggle this to see the effects for every character on the map while you play with yourself. I won't tell. (Note: The effects do have to be turned on in your settings to appear)",
-        scope: "client",
-        config: true,
-        type: Boolean,
-        default: false,
-        restricted: true
     });
 
     // Hidden flag for first-time sync
