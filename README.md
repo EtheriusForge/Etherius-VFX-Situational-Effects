@@ -1,6 +1,6 @@
 # Etherius's VFX: Situational Effects
 
-A lightweight visual enhancement module for Foundry VTT (v13+) that provides immersive, gameplay-triggered, situational effects. It works perfectly right out of the box, while offering deep customization options for those who want to fine-tune the experience.
+A lightweight visual enhancement module for Foundry VTT (v13+) that provides immersive, gameplay-triggered, situational effects. It works perfectly right out of the box, while offering deep customization options for those who want to fine-tune the experience. Currently the effects are limited to when a character gets down to 0HP, but I have more planned for the future.
 
 ## Features
 * **DM Master Defaults:** DMs can set "World Defaults" to define the initial settings for all players while still allowing for individual customization.
@@ -18,12 +18,6 @@ This module is built to be self-contained to prevent compatibility issues. Certa
 ### Supported Systems
 * **Dungeons & Dragons 5e**: Full support for version 13+.
 * **Daggerheart**: Support is currently in development and coming soon!
-
-### Confirmed Module Compatibility
-* **Monk's Common Display**: Optimized for shared player screens and digital tabletops.
-* **Midi-QOL**: Verified to trigger correctly on damage application.
-
-**Using a module not listed here?** I can't list every module, but most "plug-and-play" modules work perfectly. If you find a conflict, please notify me via Discord or GitHub and I will work to resolve it.
 
 ---
 
@@ -61,6 +55,15 @@ This module is actively maintained. Planned future enhancements include:
 * **Token-Level Feedback:** Localized visual effects centered on character tokens for healing or damage.
 * **Status Overlays:** Persistent effects for conditions like Poisoned, Frightened, or Charmed.
 * **Damage Type VFX:** Tailored effects for specific damage types (Fire, Frost, Necrotic, etc.).
+
+---
+
+### Confirmed Module Compatibility
+* **Monk's Common Display**
+* **Sequencer**
+* **Automated Animations**
+
+**Using a module not listed here?** I can't list every module, but most "plug-and-play" modules work perfectly. If you find a conflict, please notify me via Discord or GitHub and I will work to resolve it.
 
 ---
 
