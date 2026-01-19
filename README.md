@@ -46,7 +46,7 @@ Change the Module settings as you like:
 This module is, and always will be, free to use. However, if you enjoy these visual effects and want to help fuel the development of new features, there are two ways to get involved:
 
 * **[Join the Discord](#)**: Join our community to report bugs, suggest new VFX ideas, and share your feedback directly with me!
-* **[Support on Patreon](#https://www.patreon.com/c/EtheriusForge)**: Get early access to upcoming VFX modules, participate in development polls, and help keep the project growing.
+* **[Support on Patreon](https://www.patreon.com/c/EtheriusForge)**: Get early access to upcoming VFX modules, participate in development polls, and help keep the project growing.
 
 ---
 
