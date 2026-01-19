@@ -130,31 +130,7 @@ export const registerSettings = function () {
         restricted: false
     });
 
-    /* // SOCIALS & COMMUNITY SECTION
-    // Uncomment this section when your socials are ready to go live!
-    
-    Hooks.on("renderSettingsConfig", (app, html, data) => {
-        const socialButtons = `
-            <div class="form-group etherius-socials">
-                <label>Connect with Etherius</label>
-                <div class="form-fields">
-                    <a href="https://www.patreon.com/Etherius" target="_blank" class="etherius-btn patreon" title="Support on Patreon">
-                        <i class="fab fa-patreon"></i>
-                    </a>
-                    <a href="https://discord.gg/yourlink" target="_blank" class="etherius-btn discord" title="Join the Discord">
-                        <i class="fab fa-discord"></i>
-                    </a>
-                    <a href="https://twitter.com/yourhandle" target="_blank" class="etherius-btn twitter" title="Follow on X">
-                        <i class="fab fa-x-twitter"></i>
-                    </a>
-                </div>
-                <p class="notes">Join the community for updates, polls, and to share your feedback!</p>
-            </div>`;
-        
-        // Injects the buttons into your module's setting section
-        html.find('[data-category="on-screen-effects"]').append(socialButtons);
-    });
-    */
+  
 
 
 };
