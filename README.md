@@ -29,7 +29,7 @@ To install the module, follow these steps:
 2. Go to the **Add-on Modules** tab.
 3. Click the **Install Module** button.
 4. Paste the following URL into the **Manifest URL** field: 
-   `https://github.com/YOUR_USERNAME/on-screen-effects/releases/latest/download/module.json`
+   `https://raw.githubusercontent.com/EtheriusForge/Etherius-VFX-Situational-Effects/refs/heads/main/module.json`
 5. Click **Install**. 
 6. Activate the module within your World's **Manage Modules** settings.
 
