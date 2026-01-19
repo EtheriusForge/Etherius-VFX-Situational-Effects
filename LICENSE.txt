@@ -24,7 +24,7 @@ Professional attribution supports continued development and helps the community 
 
 Formal Terms
 
-Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+Attribution: You are encouraged to give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 
 Non-Commercial: You may not use this material for commercial purposes. This includes the sale of the module, charging for access, or bundling it within paid software packages.
 
