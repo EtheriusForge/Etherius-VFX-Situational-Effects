@@ -2,6 +2,10 @@
 
 A lightweight visual enhancement module for Foundry VTT (v13+) that provides immersive, gameplay-triggered, situational effects. It works perfectly right out of the box, while offering deep customization options for those who want to fine-tune the experience. Currently the effects are limited to when a character gets down to 0HP, but I have more planned for the future.
 
+![etherius_demo_final](https://github.com/user-attachments/assets/05be114a-094a-4937-aa2c-d50a47b5b6f7)
+
+---
+
 ## Features
 * **DM Master Defaults:** DMs can set "World Defaults" to define the initial settings for all players while still allowing for individual customization.
 * **Downed VFX:** Triggers a vignette and blood splatter overlay when a character reaches 0 HP.
