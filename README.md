@@ -21,7 +21,7 @@ This module is built to be self-contained to prevent compatibility issues. Certa
 
 ### Supported Systems
 * **Dungeons & Dragons 5e**: Full support for version 13+.
-* **Daggerheart**: Support is currently in development and coming soon!
+* **Daggerheart and Pathfinder**: Support is currently in development and coming soon!
 
 ---
 
