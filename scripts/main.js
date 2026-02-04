@@ -4,7 +4,7 @@ const MID = "on-screen-effects";
 
 
 Hooks.once("init", function () {
-  CONFIG.debug.hooks = true;
+  CONFIG.debug.hooks = false;
   console.log("Etherius VFX Launching");
   registerSettings();
 });
